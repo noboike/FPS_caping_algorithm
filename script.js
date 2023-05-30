@@ -1,23 +1,20 @@
 function lockFps(fps) {
-    function lerp(p1, p2, t) {
-        return p1 + (p2 - p1) * t;
-    }
-    
+
     function stepsEasing(x, s) {
         return parseInt(s * x) / s;
     }
-    let lastFrameTime = 0;
+    let lastFrame = 0;
     function loop_gzE4Fq8H(timeStamp) {
-        
-        let v = lerp(0, 500, stepsEasing((timeStamp % 1000) / 1000, fps));
-       
-        if (v != lastFrameTime) {
-            // your logics here
+
+        let currentFrame = stepsEasing((timeStamp % 1000) / 1000, fps);
+
+        if (currentFrame != lastFrame) {
+            //do your work here
         }
-        lastFrameTime = v;
+        lastFrame = currentFrame;
         requestAnimationFrame(loop_gzE4Fq8H);
     }
     requestAnimationFrame(loop_gzE4Fq8H);
 }
 
-lockFps(60);
+lockFps(60); //fps is locked at 60
