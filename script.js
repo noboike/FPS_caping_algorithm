@@ -5,9 +5,9 @@ function lockFps(fps, gameLoop, gameDraw) {
     let lastFrame;
     function loop(timeStamp) {
 
-        let currentFrame = timeStamp % (1000 / fps);
+        let currentFrame = parseInt(fps * ((timeStamp % 1000) / 1000)) / fps;
 
-        if (currentFrame < lastFrame) {
+        if (currentFrame != lastFrame) {
             if (gameLoop != null) {
                 gameLoop(timeStamp);
             }
